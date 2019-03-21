@@ -1,0 +1,100 @@
+<div class="tab-content">
+  <div class="sj_block-item" *ngFor="let item of data">
+    <div *ngIf="item.title">
+      <div class="sj_i-one"> {{ item.title }} </div>
+      <div class="sj_i-two">
+        <div *ngFor="let citem of item.content">
+          <div *ngIf="citem.type == 'text'">
+            <p> {{ citem.text }} </p>
+          </div>
+          <div *ngIf="citem.type == 'img'">
+            <img 
+              [src]="citem.src"
+              [width]="citem.width"
+              [height]="citem.height">
+          </div>
+          <div *ngIf="citem.type == 'form'">
+            <table>
+              <thead>
+                <th *ngFor="let th of citem.th"> {{ th }} </th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let td of citem.td">
+                  <td> {{ td.date }} </td>
+                  <td> {{ td.num }} </td>
+                  <td> {{ td.rate }} </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div *ngIf="citem.type == 'card'">
+            <div class="sj_card">
+              <img [src]="citem.left.src" [alt]="citem.left.alt">
+              <div class="sj_team-desc">
+                <p class="sj_team-name"> {{ citem.right.name }} </p>
+                <p *ngFor="let ptext of citem.right.list">  {{ ptext.text }} </p>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="citem.type == 'link'">
+            <div class="sj_link">
+              <span> {{ citem.link.name }} </span>
+              <a [href]="citem.link.href"> {{ citem.link.href }} </a>
+            </div>
+          </div>
+          <div *ngIf="citem.type == 'd-title'">
+            <div class="sj_dtitle">
+              <span> {{ citem.title.text }} </span>
+              <span> {{ citem.title.subtext }} </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="item.title===''">
+      <div *ngFor="let citem of item.content">
+        <div *ngIf="citem.type == 'text'">
+          <p> {{ citem.text }} </p>
+        </div>
+        <div *ngIf="citem.type == 'img'">
+          <img class="lazy" [src]="citem.src"  width="{{ citem.width }}" height="{{ citem.height }}">
+        </div>
+        <div *ngIf="citem.type == 'form'">
+          <table>
+            <thead>
+              <th *ngFor="let th of citem.th"> {{ th }} </th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let td of citem.td">
+                <td> {{ td.date }} </td>
+                <td> {{ td.num }} </td>
+                <td> {{ td.rate }} </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div *ngIf="citem.type == 'card'">
+          <div class="sj_card">
+            <img [src]="citem.left.src" [alt]="citem.left.alt">
+            <div class="sj_team-desc">
+              <p class="sj_team-name"> {{ citem.right.name }} </p>
+              <p *ngFor="let ptext of citem.right.list">  {{ ptext.text }} </p>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="citem.type == 'link'">
+          <div class="sj_link">
+            <span> {{ citem.link.name }} </span>
+            <a [href]="citem.link.href"> {{ citem.link.href }} </a>
+          </div>
+        </div>
+        <div *ngIf="citem.type == 'd-title'">
+          <div class="sj_dtitle">
+            <span> {{ citem.title.text }} </span>
+            <span> {{ citem.title.subtext }} </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
