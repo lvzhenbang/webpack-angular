@@ -1,6 +1,12 @@
-# WebpackAngular
+# Webpack-Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.5.
+anuglar version: 7.3.5 .
+
+relative project:
+
+* [webpack4.x-multi-page](https://github.com/lvzhenbang/webpack4.x-multi-page) for static site. [demo](https://lvzhenbang.github.io/webpack4.x-multi-page/dist/#/index)
+* [webpack4.x-angularjs](https://github.com/lvzhenbang/webpack4.x-angularjs) for `angular.js`. [demo](https://lvzhenbang.github.io/webpack4.x-angularjs/dist/#/index)
+
 
 ## Development server
 
