@@ -15,6 +15,7 @@ import {
 } from '../components/app';
 
 import { FirstComponent } from '../components/commons/first';
+import { NewslistComponent } from '../components/commons/newslist';
 
 const appRoutes: Routes = [
   {
@@ -33,6 +34,12 @@ const appRoutes: Routes = [
   {
     path: 'newscenter',
     component: NewscenterComponent,
+    children: [
+      {
+        path: ':type',
+        component: NewslistComponent
+      }
+    ]
   },
   {
     path: 'recruitment',

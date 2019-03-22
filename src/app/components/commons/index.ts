@@ -5,7 +5,8 @@ import { BannerComponent } from './banner';
 import { FirstComponent } from './first';
 import { FooterComponent } from './footer';
 import { HeaderComponent } from './header';
-import { MapComponent } from './map/map';
+import { MapComponent } from './map';
+import { NewslistComponent } from './newslist';
 import { PartnersComponent } from './partners';
 import { ProductsComponent } from './products';
 import { SecondComponent } from './second';
@@ -19,6 +20,7 @@ export {
   FirstComponent,
   HeaderComponent,
   MapComponent,
+  NewslistComponent,
   PartnersComponent,
   ProductsComponent,
   SecondComponent,
