@@ -3,7 +3,7 @@
  * by lzb
  */
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -43,12 +43,14 @@ export class FirstComponent implements OnInit {
   'cn_name': string;
   'en_name': string;
   subtabs: any;
-  path: any;
+  path: string;
+  param: string;
 
   constructor(
     private iss: DataService,
+    private router: Router,
     private route: ActivatedRoute,
-  ) { }
+  ) {}
 
   isActive(index) {
     return index === 0;
@@ -76,5 +78,16 @@ export class FirstComponent implements OnInit {
         this.en_name = data[this.path].en_name;
         this.subtabs = data[this.path].subtabs;
       });
+
+    // get param
+    switch (this.path) {
+      case 'zjsj': this.param = 'investment'; break;
+      case 'ywbk': this.param = 'finance'; break;
+      case 'sxy': this.param = 'school'; break;
+      case 'shzr': this.param = 'system'; break;
+      default: this.param = '';
+    }
+
+    this.router.navigate(['./' + this.path, this.param]);
   }
 }

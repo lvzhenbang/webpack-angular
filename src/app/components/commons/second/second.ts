@@ -12,7 +12,8 @@ import { DataService } from 'src/app/services/data.service';
 
 export class SecondComponent implements OnInit {
   data: Observable<any>;
-  type: any;
+  path: string;
+  type: string;
 
   constructor(
     private iss: DataService,

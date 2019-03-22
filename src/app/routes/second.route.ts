@@ -7,6 +7,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { SecondComponent } from '../components/commons/second';
 
 const blockRoutes: Routes = [
+  // {
+  //   path: '',
+  //   redirectTo: 'investment',
+  //   pathMatch: 'full'
+  // },
   {
     path: ':type',
     component: SecondComponent,
