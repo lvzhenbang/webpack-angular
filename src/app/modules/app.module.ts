@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, NgModuleFactoryLoader, SystemJsNgModuleLoader } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -27,6 +28,7 @@ import { AppRoutingModule } from '../routes/app.route';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     GlobalModule,
     // AdminModule,

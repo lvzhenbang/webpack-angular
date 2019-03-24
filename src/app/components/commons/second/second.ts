@@ -4,10 +4,13 @@ import { Observable } from 'rxjs';
 import { switchMap, map, tap } from 'rxjs/operators';
 import { DataService } from 'src/app/services/data.service';
 
+import { flipIn } from '../../../animations';
+
 @Component({
   selector: 'app-second',
   templateUrl: './second.html',
-  styleUrls: ['./second.scss']
+  styleUrls: ['./second.scss'],
+  animations: [ flipIn ]
 })
 
 export class SecondComponent implements OnInit {

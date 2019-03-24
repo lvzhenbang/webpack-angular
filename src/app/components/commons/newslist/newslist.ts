@@ -8,12 +8,15 @@ import { Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { DataService } from 'src/app/services/data.service';
 
+import { zoomIn } from '../../../animations';
+
 @Component({
   selector: 'app-newslist',
   template: `
   <div class="sj_tab-content">
     <div
       class="sj_new-item"
+      @zoomIn
       *ngFor="let item of data; index as i"
       [attr.type]="item.type"
       [ngClass]="{ reverse: isReverse(i) }">
@@ -33,7 +36,8 @@ import { DataService } from 'src/app/services/data.service';
     </div>
   </div>
   `,
-  styleUrls: ['./newslist.scss']
+  styleUrls: ['./newslist.scss'],
+  animations: [ zoomIn ]
 })
 
 export class NewslistComponent implements OnInit {

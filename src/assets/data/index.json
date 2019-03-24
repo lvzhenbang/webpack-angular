@@ -5,7 +5,7 @@
   },
   "nav": [
     {
-      "href": "/zjsj",
+      "href": "zjsj",
       "text": "走进圣捷",
       "type": "",
       "subMap": [
@@ -18,7 +18,7 @@
       ]
     },
     {
-      "href": "/ywbk",
+      "href": "ywbk",
       "text": "业务板块",
       "type": "",
       "subMap": [
@@ -26,21 +26,21 @@
         { "href": "allfinance", "text": "全品类金融", "type": "ywbk" },
         { "href": "estate", "text": "商业地产", "type": "ywbk" },
         { "href": "restaurant", "text": "餐饮", "type": "ywbk" },
-        { "href": "culture2", "text": "文化", "type": "ywbk" },
+        { "href": "culture", "text": "文化", "type": "ywbk" },
         { "href": "health", "text": "健康", "type": "ywbk" }    
       ]
     },
     {
-      "href": "/newscenter",
+      "href": "newscenter",
       "text": "新闻中心",
       "type": "",
       "subMap": [
-        { "href": "dynamic", "text": "圣捷动态", "type": "newscenter"},
-        { "href": "focus", "text": "新闻聚焦", "type": "newscenter" }      
+        { "href": "1", "text": "圣捷动态", "type": "newscenter"},
+        { "href": "2", "text": "新闻聚焦", "type": "newscenter" }      
       ]
     },
     {
-      "href": "/shzr",
+      "href": "shzr",
       "text": "社会责任",
       "type": "",
       "subMap": [
@@ -54,25 +54,25 @@
       "text": "圣捷商学院",
       "type": "",
       "subMap": [
-        { "href": ".school", "text": "商学院", "type": "sxy" },
-        { "href": ".celebrites", "text": "商学院名人", "type": "sxy" },
-        { "href": ".classroom", "text": "商学院1-4期", "type": "sxy" }      
+        { "href": "school", "text": "商学院", "type": "sxy" },
+        { "href": "celebrites", "text": "商学院名人", "type": "sxy" },
+        { "href": "classroom", "text": "商学院1-4期", "type": "sxy" }      
       ]
     },
     {
-      "href": "/contactus",
+      "href": "contactus",
       "text": "联系我们",
       "type": "contactus"
     },
     {
-      "href": "/recruitment",
+      "href": "recruitment",
       "text": "人才招聘",
       "type": "contactus"
     }
   ],
   "service": {
     "phone": "400-075-2005",
-    "worktime": "9:00-18:00&nsp;&nsp;周一至周五"
+    "worktime": "9:00-18:00  周一至周五"
   },
   "qrcode": {
     "img": "assets/imgs/index/sj-qr.png",
@@ -81,7 +81,7 @@
   },
   "banner": [
     {
-      "href": "/styleus",
+      "href": "styleus",
       "img": "assets/imgs/index/banner-1.jpg",
       "title": "企业风采"
     },

@@ -1,5 +1,5 @@
 <div class="tab-content">
-  <div class="sj_block-item" *ngFor="let item of data">
+  <div @flipIn class="sj_block-item" *ngFor="let item of data">
     <div *ngIf="item.title">
       <div class="sj_i-one"> {{ item.title }} </div>
       <div class="sj_i-two">
