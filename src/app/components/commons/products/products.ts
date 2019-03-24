@@ -10,7 +10,7 @@ import { Component, Input } from '@angular/core';
   <div class="sj_loan_product sj_wrapper">
     <app-blocktitle [title]="products.title"></app-blocktitle>
 
-    <div class="sj_product-list">
+    <div class="sj_product-list" *ngIf="products.list.length">
         <div class="sj_product-item" *ngFor="let item of products.list">
           <a [routerLink]="item.href">
             <div class="sj_left">

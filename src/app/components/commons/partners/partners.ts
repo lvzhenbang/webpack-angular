@@ -10,7 +10,7 @@ import { Component, Input } from '@angular/core';
   <div class="sj_partner sj_wrapper">
     <app-blocktitle [title]="partners.title"></app-blocktitle>
 
-    <div class="sj_partner-list">
+    <div class="sj_partner-list" *ngIf="partners.list.length">
       <div class="sj_partner-item" *ngFor="let item of partners.list">
         <img [src]="item.img" [alt]="item.alt">
       </div>

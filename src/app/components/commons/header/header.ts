@@ -14,7 +14,7 @@ import { Component, Input } from '@angular/core';
           <img [src]="logo.img" [alt]="logo.alt" />
         </a>
       </div>
-      <div class="sj_navbar">
+      <div class="sj_navbar" *ngIf="nav.length">
         <div class="sj_navbar-container">
           <ul class="sj_navbar-box">
             <li routerLinkActive="active">

@@ -13,7 +13,7 @@ import { zoomIn } from '../../../animations';
 @Component({
   selector: 'app-newslist',
   template: `
-  <div class="sj_tab-content">
+  <div class="sj_tab-content" *ngIf="data.length">
     <div
       class="sj_new-item"
       @zoomIn
