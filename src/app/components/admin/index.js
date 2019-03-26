@@ -1,5 +1,5 @@
-import { loginComponent } from './login';
+import { LoginComponent } from './login';
 
-export const [
-  loginComponent,
-];
+export {
+  LoginComponent,
+};

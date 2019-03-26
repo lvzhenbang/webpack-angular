@@ -5,13 +5,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 
+import { rightIn } from '../../../animations';
+
 @Component({
   selector: 'app-styleus',
   template: `
   <div class="sj_style-list sj_wrapper">
     <app-blocktitle [title]="styleus.title"></app-blocktitle>
 
-    <div class="style-list">
+    <div class="style-list" [@rightIn]="styleus.list.length">
       <div
         class="style-item"
         *ngFor="let item of styleus.list"
@@ -26,7 +28,8 @@ import { DataService } from 'src/app/services/data.service';
     </div>
   </div>
   `,
-  styleUrls: ['./styleus.scss']
+  styleUrls: ['./styleus.scss'],
+  animations: [ rightIn ]
 })
 
 export class StyleusComponent implements OnInit {

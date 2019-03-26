@@ -17,6 +17,8 @@ import {
 import { FirstComponent } from '../components/commons/first';
 import { NewslistComponent } from '../components/commons/newslist';
 
+import { UserLoginGuard } from '../guards/userLoginGuard';
+
 const appRoutes: Routes = [
   {
     path: '',
@@ -34,8 +36,10 @@ const appRoutes: Routes = [
   {
     path: 'newscenter',
     component: NewscenterComponent,
+    canActivate: [UserLoginGuard],
     children: [
       {
+        // canActivateChild: [UserLoginGuard],
         path: ':type',
         component: NewslistComponent
       }
@@ -48,6 +52,7 @@ const appRoutes: Routes = [
   {
     path: 'shzr',
     component: FirstComponent,
+    canActivate: [UserLoginGuard],
     loadChildren: '../modules/second.module#SecondModule'
   },
   {

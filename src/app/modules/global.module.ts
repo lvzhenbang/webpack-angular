@@ -25,6 +25,10 @@ import { DataService } from '../services/data.service';
 import { LoadingService } from '../services/loading.service';
 import { ServiceworkerService } from '../services/serviceworker.service';
 
+// guards
+
+import { UserLoginGuard } from '../guards/userLoginGuard';
+
 // directive
 import { BacktopDirective } from '../directives/backtop.directive';
 import { CarouselDirective } from '../directives/carousel.directive';
@@ -42,6 +46,7 @@ import { NavfixedDirective } from '../directives/navfixed.directive';
     DataService,
     LoadingService,
     ServiceworkerService,
+    UserLoginGuard,
   ],
   declarations: [
     // component

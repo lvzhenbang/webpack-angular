@@ -3,13 +3,13 @@
  * by lzb
  */
 import { Injectable } from '@angular/core';
-
 import { DataService } from './data.service';
 
 @Injectable()
 export class AuthService {
   isLogin: boolean;
   errorMessage: string;
+  redirectUrl: string;
 
   constructor(private dataService: DataService) {
     this.isLogin = false;
@@ -17,8 +17,9 @@ export class AuthService {
   }
 
   auth(loginInfo) {
-    return Promise.resolve(this.dataService
-      .getData('data/users.json'))
+    return this.dataService
+      .getData('assets/data/users.json')
+      .toPromise()
       .then((data: any) => {
         if (data && data.username !== loginInfo.username) {
           this.errorMessage = '错误-用户名不存在!';
@@ -38,23 +39,4 @@ export class AuthService {
         return this.errorMessage;
       });
   }
-}
-
-export function AuthRunBlock($transitions) {
-  $transitions.onBefore(
-    {
-      to: state => state.data && state.data.requiresAuth,
-    },
-    (transition) => {
-      const AS: AuthService = transition.injector().get('authService');
-      if (!AS.isLogin) {
-        return transition
-          .router
-          .stateService
-          .target('login', undefined, { location: false });
-      }
-      return true;
-    },
-    { priority: 10 },
-  );
 }

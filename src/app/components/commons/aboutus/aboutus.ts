@@ -4,10 +4,12 @@
  */
 import { Component, Input } from '@angular/core';
 
+import { indexIn } from '../../../animations';
+
 @Component({
   selector: 'app-aboutus',
   template: `
-  <div class="about-us sj_wrapper">
+  <div class="about-us sj_wrapper" @indexIn>
     <app-blocktitle [title]="aboutus.title"></app-blocktitle>
 
     <div class="about-list" *ngIf="aboutus.list.length">
@@ -18,7 +20,8 @@ import { Component, Input } from '@angular/core';
     </div>
   </div>
   `,
-  styleUrls: ['./aboutus.scss']
+  styleUrls: ['./aboutus.scss'],
+  animations: [ indexIn ]
 })
 
 export class AboutusComponent {

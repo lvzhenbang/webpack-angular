@@ -4,6 +4,7 @@
  */
 import { Component, Input } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,11 +13,11 @@ import { AuthService } from '../../../services/auth.service';
     <div class="form">
       <div class="form-header">
         <img src="assets/init/favicon-144.png"/>
-        <h3> webpack-angularjs </h3>
+        <h3> webpack-angular </h3>
       </div>
-      <p class="form-message" [hidden]="errorMessage">
-        <strong>{{ errorMessage.split('-')[0] }} ：</strong>
-        <i>{{ errorMessage.split('-')[1] }}</i>
+      <p class="form-message" [hidden]="hideError">
+        <strong>{{ errorTitle }} ：</strong>
+        <i>{{ errorBody }}</i>
       </p>
       <div class="form-content">
         <div class="text-input">
@@ -38,7 +39,7 @@ import { AuthService } from '../../../services/auth.service';
             (keyup)="check('password')"
             [(ngModel)]="loginInfo.password">
         </div>
-        <button class="btn" type="button" (click)="login()" [disabled]="clickAble"> 登录 </button>
+        <button class="btn" type="button" (click)="login()" [disabled]="disableClick"> 登录 </button>
       </div>
     </div>
   </div>
@@ -47,72 +48,75 @@ import { AuthService } from '../../../services/auth.service';
 })
 
 export class LoginComponent {
-  @Input() tState;
+  loginInfo = {
+    username: '',
+    password: '',
+  };
+  disableClick: boolean;
 
-  errorMessage: string;
-  loginInfo = { username: null, password: null };
-  clickAble: boolean;
+  hideError: boolean;
+  errorTitle: string;
+  errorBody: string;
 
   constructor(
     private authService: AuthService,
-    private $state,
+    private router: Router,
   ) {
-    this.authService = authService;
-    this.$state = $state;
+    this.hideError = true;
+    this.disableClick = true;
   }
 
   // 实际开发中这样做不正确，这里只是为了演示
   login() {
-    // only login-component self to check
-    // if (!this.check()) return;
-
-    this.clickAble = true;
-
     this
       // requset server to check
       .authService
       .auth(this.loginInfo)
       // fetch server error
-      .then((errorMessage) => {
-        this.errorMessage = errorMessage;
-      })
-      // $state.go() depend on this.tState
       .then(() => {
-        this.redirectTo();
+        if (this.authService.isLogin) {
+          this.redirectTo();
+        } else {
+          this.hideError = false;
+          this.setError(this.authService.errorMessage);
+        }
       })
       // catch unexcepted error
       .catch((error) => {
-        this.errorMessage = error;
+        this.hideError = false;
+        this.setError(`错误-${error}`);
       })
       .finally(() => {
-        this.clickAble = false;
+        this.disableClick = false;
       });
   }
 
   check(type) {
     if (type && this.loginInfo[type].trim().length <= 0) {
-      this.errorMessage = `验证错误-${type}不能为空！`;
+      this.hideError = false;
+      this.setError(`验证错误-${type}不能为空！`);
       return false;
     }
 
     if (this.loginInfo[type].trim().length >= 3) {
-      this.errorMessage = `验证通过-${type}的长度已满足至少3位的要求。`;
+      this.hideError = false;
+      this.setError( `验证通过-${type}的长度已满足至少3位的要求。`);
     } else {
-      this.errorMessage = `验证错误-${type}的长度至少需要3位！`;
+      this.hideError = false;
+      this.setError( `验证错误-${type}的长度至少需要3位！`);
       return false;
     }
-
+    this.hideError = true;
+    this.disableClick = false;
     return true;
   }
 
+  setError(message) {
+    this.errorTitle = message.split('-')[0];
+    this.errorBody = message.split('-')[1];
+  }
+
   redirectTo() {
-    return this.$state.go(
-      this.tState.state(),
-      this.tState.params(),
-      {
-        ...this.tState.options(),
-        reload: true,
-      },
-    );
+    return this.router.navigateByUrl(this.router.parseUrl(this.authService.redirectUrl));
   }
 }

@@ -31,7 +31,7 @@ import { AppRoutingModule } from '../routes/app.route';
     BrowserAnimationsModule,
     AppRoutingModule,
     GlobalModule,
-    // AdminModule,
+    AdminModule,
     FormsModule,
   ],
   providers: [ { provide: NgModuleFactoryLoader, useClass: SystemJsNgModuleLoader } ],

@@ -8,10 +8,12 @@ import { DataService } from '../../../services/data.service';
 @Component({
   selector: 'app-index',
   template: `
-    <app-banner [banner]="banner"></app-banner>
-    <app-products [products]="products"></app-products>
-    <app-partners [partners]="partners"></app-partners>
-    <app-aboutus [aboutus]="aboutus"></app-aboutus>
+    <div>
+      <app-banner [banner]="banner"></app-banner>
+      <app-products [products]="products"></app-products>
+      <app-partners [partners]="partners"></app-partners>
+      <app-aboutus [aboutus]="aboutus"></app-aboutus>
+    </div>
   `,
 })
 
