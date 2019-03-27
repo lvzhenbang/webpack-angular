@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   <div class="box">
     <div class="form">
       <div class="form-header">
-        <img src="assets/init/favicon-144.png"/>
+        <img src="assets/init/favicon-152.png"/>
         <h3> webpack-angular </h3>
       </div>
       <p class="form-message" [hidden]="hideError">
@@ -53,6 +53,10 @@ export class LoginComponent {
     password: '',
   };
   disableClick: boolean;
+  loginState = {
+    username: false,
+    password: false,
+  };
 
   hideError: boolean;
   errorTitle: string;
@@ -94,21 +98,26 @@ export class LoginComponent {
   check(type) {
     if (type && this.loginInfo[type].trim().length <= 0) {
       this.hideError = false;
+      this.loginState[type] = false;
       this.setError(`验证错误-${type}不能为空！`);
-      return false;
     }
 
     if (this.loginInfo[type].trim().length >= 3) {
       this.hideError = false;
-      this.setError( `验证通过-${type}的长度已满足至少3位的要求。`);
+      this.loginState[type] = true;
+      this.setError(`验证通过-${type}的长度已满足至少3位的要求。`);
     } else {
       this.hideError = false;
-      this.setError( `验证错误-${type}的长度至少需要3位！`);
-      return false;
+      this.loginState[type] = false;
+      this.setError(`验证错误-${type}的长度至少需要3位！`);
     }
-    this.hideError = true;
-    this.disableClick = false;
-    return true;
+
+    if (this.loginState.username && this.loginState.password) {
+      this.setError(`验证通过-密码和用户名输入合法。`);
+      this.disableClick = false;
+    } else {
+      this.disableClick = true;
+    }
   }
 
   setError(message) {
