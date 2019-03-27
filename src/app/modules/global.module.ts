@@ -32,14 +32,16 @@ import { UserLoginGuard } from '../guards/userLoginGuard';
 // directive
 import { BacktopDirective } from '../directives/backtop.directive';
 import { CarouselDirective } from '../directives/carousel.directive';
-import { MapDirective } from '../directives/map.directive';
 import { NavfixedDirective } from '../directives/navfixed.directive';
+
+import { BaiduMapModule } from 'angular2-baidu-map';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     HttpClientModule,
+    BaiduMapModule.forRoot({ak: 'zZ1jDRxcKuPUEX4Ar77rxaLqhk4v6RAj'}),
   ],
   providers: [
     AuthService,
@@ -65,7 +67,6 @@ import { NavfixedDirective } from '../directives/navfixed.directive';
     // directive
     BacktopDirective,
     CarouselDirective,
-    MapDirective,
     NavfixedDirective,
   ],
   exports: [
@@ -85,7 +86,6 @@ import { NavfixedDirective } from '../directives/navfixed.directive';
     // directive
     BacktopDirective,
     CarouselDirective,
-    MapDirective,
     NavfixedDirective,
   ],
 })
@@ -93,10 +93,6 @@ import { NavfixedDirective } from '../directives/navfixed.directive';
 export class GlobalModule { }
 
 declare global {
-  interface Window {
-    BMap: any;
-  }
-
   interface Title {
     'cn_name': string;
     'en_name': string;

@@ -14,6 +14,7 @@ import { DataService } from 'src/app/services/data.service';
 
     <router-outlet></router-outlet>
 
+    <app-map></app-map>
     <app-footer [nav]="index.nav" [qrcode]="index.qrcode" [service]="index.service"></app-footer>
     <app-backtop></app-backtop>
   </div>
