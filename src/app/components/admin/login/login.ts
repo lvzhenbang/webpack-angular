@@ -99,17 +99,17 @@ export class LoginComponent {
     if (type && this.loginInfo[type].trim().length <= 0) {
       this.hideError = false;
       this.loginState[type] = false;
-      this.setError(`验证错误-${type}不能为空！`);
+      this.setError(`${type}验证错误-${type}不能为空！`);
     }
 
     if (this.loginInfo[type].trim().length >= 3) {
       this.hideError = false;
       this.loginState[type] = true;
-      this.setError(`验证通过-${type}的长度已满足至少3位的要求。`);
+      this.setError(`${type}验证通过-${type}的长度已满足至少3位的要求。`);
     } else {
       this.hideError = false;
       this.loginState[type] = false;
-      this.setError(`验证错误-${type}的长度至少需要3位！`);
+      this.setError(`${type}验证错误-${type}的长度至少需要3位！`);
     }
 
     if (this.loginState.username && this.loginState.password) {
