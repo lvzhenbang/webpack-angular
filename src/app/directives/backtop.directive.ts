@@ -12,8 +12,8 @@ import scrollto from '../utils/scrollto';
 
 export class BacktopDirective {
   @Input() appBacktop: string;
-
   showing: boolean;
+
   constructor(private el: ElementRef) {
     this.showing = Object.prototype.hasOwnProperty.call(el.nativeElement, 'showing') ? el.nativeElement.showing : false;
 
@@ -28,8 +28,14 @@ export class BacktopDirective {
       }
     } else {
       this.showing = false;
-      element.style.display = 'none';
+      this.el.nativeElement.style.display = 'none';
     }
+  }
+
+  @HostListener('click') onClick() {
+    window.removeEventListener('scroll', this.backScroll);
+    this.showing = false;
+    scrollto(0, this.backScroll);
   }
 }
 
