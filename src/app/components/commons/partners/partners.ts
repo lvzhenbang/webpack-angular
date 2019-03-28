@@ -24,7 +24,7 @@ import { indexIn, rightIn } from '../../../animations';
 })
 
 export class PartnersComponent {
-  @Input() partners: any[];
+  @Input() partners: any;
 
   constructor() {}
 }
