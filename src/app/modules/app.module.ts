@@ -34,7 +34,7 @@ import { AppRoutingModule } from '../routes/app.route';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ServiceWorkerModule.register('/ngsw-worker.js'),
+    ServiceWorkerModule.register('./ngsw-worker.js'),
     AppRoutingModule,
     GlobalModule,
     AdminModule,

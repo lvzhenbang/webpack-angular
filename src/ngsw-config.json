@@ -13,11 +13,11 @@
           "/index.html"
         ],
         "versionedFiles": [
-          "/*.main.*.js",
-          "/*.es2015-polyfills.*.js",
-          "/*.polyfills.*.js",
-          "/*.runtime.*.js",
-          "/*.styles.*.css"
+          "/main.*.js",
+          "/es2015-polyfills.*.js",
+          "/polyfills.*.js",
+          "/runtime.*.js",
+          "/styles.*.css"
         ]
       }
     },
