@@ -1,17 +1,17 @@
 class Carousel {
   carousel: any;
-  items: any;
+  items: NodeList;
   btnPrev: any;
   btnNext: any;
   interval: any;
   activeIndex: number;
+  nextIndex: number;
   options: any;
 
-  constructor(element, config = {}) {
+  constructor(element: Element, config = {}) {
     const defaults = {
       direction: 'left',
       timer: 2000,
-      hasIndicators: true,
       autoplay: true,
     };
 
@@ -27,11 +27,11 @@ class Carousel {
     };
   }
 
-  getIndex(items, element) {
-    return [...items].indexOf(element);
+  getIndex(items: NodeList, element: Element) {
+    return Array.prototype.slice.call(items).indexOf(element);
   }
 
-  getNextIndex(items, element, direction, activeIndex) {
+  getNextIndex(items: NodeList, element: Element, direction: string, activeIndex: number) {
     if (element) {
       return this.getIndex(items, element);
     }
@@ -40,18 +40,18 @@ class Carousel {
       return (activeIndex + 1) % items.length;
     }
 
-    if (items.length - 1 === -1) {
+    if (this.activeIndex - 1 === -1) {
       return this.items.length - 1;
     }
 
     return this.activeIndex - 1;
   }
 
-  reflow(element) {
+  reflow(element: HTMLElement) {
     return element.offsetHeight;
   }
 
-  checkDirection(className: any) {
+  checkDirection(className: string) {
     if (className.indexOf('next') > -1) {
       return 'left';
     }
@@ -61,20 +61,19 @@ class Carousel {
     return 'left';
   }
 
-  slide(direction, element) {
-    const activeElement = this.carousel.querySelector('.carousel-item.active');
+  slide(direction: string, element: Element) {
+    const activeElement: Element = this.carousel.querySelector('.carousel-item.active');
 
     this.activeIndex = this.getIndex(this.items, activeElement);
+    this.nextIndex = this.getNextIndex(this.items, element, direction, this.activeIndex);
 
-    const nextIndex = this.getNextIndex(this.items, element, direction, this.activeIndex);
-
-    const nextElement = element || this.items[nextIndex];
-    const orderClass = direction === 'left' ? 'next' : 'prev';
-    const directionClass = direction === 'left' ? 'left' : 'right';
+    const nextElement: Element = element || this.items[this.nextIndex] as Element;
+    const orderClass: string = direction === 'left' ? 'next' : 'prev';
+    const directionClass: string = direction === 'left' ? 'left' : 'right';
 
     nextElement.classList.add(orderClass);
 
-    this.reflow(activeElement);
+    this.reflow(activeElement as HTMLElement);
 
     activeElement.classList.add(directionClass);
     nextElement.classList.add(directionClass);
@@ -93,13 +92,9 @@ class Carousel {
 
     activeElement.addEventListener('transitionend', animate);
 
-    if (this.options.hasIndicators) {
-      const indicators = this.carousel.querySelector('.carousel-indicators').children;
-      indicators[this.activeIndex].classList.remove('active');
-      indicators[nextIndex].classList.add('active');
-    }
+    this.clickIndicator();
 
-    this.activeIndex = nextIndex;
+    this.activeIndex = this.nextIndex;
   }
 
   autoplay() {
@@ -115,19 +110,37 @@ class Carousel {
     }
   }
 
-  addIndicators() {
-    const indicators = document.createElement('ol');
+  addIndicators(render) {
+    const indicators = render.createElement('div');
 
-    indicators.className = 'carousel-indicators';
+    render.addClass(indicators, 'carousel-indicators');
 
     for (let i = 0; i < this.items.length; i += 1) {
-      const indicatorItem = document.createElement('li');
-
-      indicatorItem.setAttribute('data-index', String(i));
-      indicators.appendChild(indicatorItem);
+      const indicatorItem = render.createElement('li');
+      render.setAttribute(indicatorItem, 'data-index', i);
+      render.appendChild(indicators, indicatorItem);
     }
+
     (indicators.children)[this.activeIndex].classList.add('active');
-    this.carousel.appendChild(indicators);
+
+    render.appendChild(this.carousel, indicators);
+  }
+
+  clickIndicator() {
+    const indicators = this.carousel.querySelector('.carousel-indicators').children;
+    indicators[this.activeIndex].classList.remove('active');
+    indicators[this.nextIndex].classList.add('active');
+  }
+
+  addBtnArrow(render) {
+    const prevBtn = render.createElement('div');
+    const nextBtn = render.createElement('div');
+    render.addClass(prevBtn, 'carousel-control');
+    render.addClass(prevBtn, 'btn-prev');
+    render.addClass(nextBtn, 'carousel-control');
+    render.addClass(nextBtn, 'btn-next');
+    render.appendChild(this.carousel, prevBtn);
+    render.appendChild(this.carousel, nextBtn);
   }
 
   destory() {
@@ -136,10 +149,6 @@ class Carousel {
   }
 
   init() {
-    if (this.options.hasIndicators) {
-      this.addIndicators();
-    }
-
     if (this.options.autoplay) {
       this.autoplay();
     }
@@ -166,7 +175,7 @@ class Carousel {
           return;
         }
 
-        this.slide(dataIndex > this.activeIndex ? 'left' : 'right', this.items[dataIndex]);
+        this.slide(dataIndex > this.activeIndex ? 'left' : 'right', this.items[dataIndex] as Element);
       }
 
       if (e.target.className.indexOf('btn') > -1) {

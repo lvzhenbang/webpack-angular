@@ -31,7 +31,7 @@ import { UserLoginGuard } from '../guards/userLoginGuard';
 
 // directive
 import { BacktopDirective } from '../directives/backtop.directive';
-import { CarouselDirective } from '../directives/carousel.directive';
+// import { CarouselDirective } from '../directives/carousel.directive';
 import { NavfixedDirective } from '../directives/navfixed.directive';
 
 import { BaiduMapModule } from 'angular2-baidu-map';
@@ -66,7 +66,7 @@ import { BaiduMapModule } from 'angular2-baidu-map';
     SecondComponent,
     // directive
     BacktopDirective,
-    CarouselDirective,
+    // CarouselDirective,
     NavfixedDirective,
   ],
   exports: [
@@ -85,7 +85,7 @@ import { BaiduMapModule } from 'angular2-baidu-map';
     SecondComponent,
     // directive
     BacktopDirective,
-    CarouselDirective,
+    // CarouselDirective,
     NavfixedDirective,
   ],
 })
