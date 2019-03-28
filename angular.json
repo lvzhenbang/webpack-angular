@@ -40,7 +40,6 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "deployUrl": "https://lvzhenbang.github.io/webpack-angular/dist/",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
