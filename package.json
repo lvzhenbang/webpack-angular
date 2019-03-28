@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "gh-pages": "git checkout -b gh-pages && npm run lint && npm run build && git add -A && git commit -m 'publish-gh-pages' && git push origin gh-pages:gh-pages --force && git checkout master && git branch -D gh-pages"
+    "gh-pages": "git checkout -b gh-pages && npm run build && git add -A && git commit -m 'publish-gh-pages' && git push origin gh-pages:gh-pages --force && git checkout master && git branch -D gh-pages"
   },
   "private": true,
   "dependencies": {
