@@ -121,8 +121,7 @@ class Carousel {
       render.appendChild(indicators, indicatorItem);
     }
 
-    (indicators.children)[this.activeIndex].classList.add('active');
-
+    render.addClass((indicators.children)[this.activeIndex], 'active');
     render.appendChild(this.carousel, indicators);
   }
 
