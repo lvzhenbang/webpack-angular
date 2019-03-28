@@ -18,7 +18,7 @@ export class AuthService {
 
   auth(loginInfo) {
     return this.dataService
-      .getData('assets/data/users.json')
+      .getData('./assets/data/users.json')
       .toPromise()
       .then((data: any) => {
         if (data && data.username !== loginInfo.username) {

@@ -28,7 +28,7 @@ export class IndexComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.iss.getData('/assets/data/index.json')
+    this.iss.getData('./assets/data/index.json')
     .subscribe((data: any) => {
       this.banner = data.banner;
       this.products = data.products;

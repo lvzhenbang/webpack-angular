@@ -91,7 +91,7 @@ export class RecruitmentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.iss.getData('/assets/data/recruitment.json')
+    this.iss.getData('./assets/data/recruitment.json')
     .subscribe((data: any) => {
       this.recruitment = data;
       this.thead = data.thead;

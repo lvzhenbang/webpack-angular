@@ -44,7 +44,7 @@ export class StyleusComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.iss.getData('/assets/data/styleus.json')
+    this.iss.getData('./assets/data/styleus.json')
     .subscribe((data: any) => {
       this.styleus = data;
     });

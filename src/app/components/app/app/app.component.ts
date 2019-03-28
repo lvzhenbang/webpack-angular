@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.iss.getData('/assets/data/index.json')
+    this.iss.getData('./assets/data/index.json')
     .subscribe((data) => {
       this.index = data;
     });

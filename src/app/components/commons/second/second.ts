@@ -31,7 +31,7 @@ export class SecondComponent implements OnInit {
       }),
       switchMap(path => {
         // console.log(path);
-        return this.iss.getData(`/assets/data/${path}.json`);
+        return this.iss.getData(`./assets/data/${path}.json`);
       })
     ).subscribe(data => {
       this.data = data[this.type];

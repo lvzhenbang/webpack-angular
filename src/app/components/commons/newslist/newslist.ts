@@ -59,7 +59,7 @@ export class NewslistComponent implements OnInit {
        this.type = params.get('type');
       }),
       switchMap(() => {
-        return this.iss.getData('/assets/data/newscenter.json');
+        return this.iss.getData('./assets/data/newscenter.json');
       })
     ).subscribe((data: any) => {
       const rData = data.list;

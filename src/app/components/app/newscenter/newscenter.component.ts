@@ -40,7 +40,7 @@ export class NewscenterComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.iss.getData('/assets/data/newscenter.json')
+    this.iss.getData('./assets/data/newscenter.json')
       .subscribe((data: any) => {
         this.cn_name = data.cn_name;
         this.en_name = data.en_name;

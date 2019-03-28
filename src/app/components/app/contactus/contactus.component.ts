@@ -65,12 +65,12 @@ export class ContactusComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.iss.getData('/assets/data/index.json')
+    this.iss.getData('./assets/data/index.json')
     .subscribe((data: any) => {
       this.aboutus = data.aboutus;
     });
 
-    this.iss.getData('/assets/data/contactus.json')
+    this.iss.getData('./assets/data/contactus.json')
     .subscribe((data: any) => {
       this.title = data.title;
       this.img = data.img;
