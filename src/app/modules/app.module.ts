@@ -1,7 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule, NgModuleFactoryLoader, SystemJsNgModuleLoader } from '@angular/core';
+import {
+  NgModule,
+  NgModuleFactoryLoader,
+  SystemJsNgModuleLoader
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { GlobalModule } from './global.module';
 import { AdminModule } from './admin.module';
@@ -29,6 +34,7 @@ import { AppRoutingModule } from '../routes/app.route';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ServiceWorkerModule.register('/ngsw-worker.js'),
     AppRoutingModule,
     GlobalModule,
     AdminModule,

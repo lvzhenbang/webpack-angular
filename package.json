@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "gh-pages": "git checkout -b gh-pages && npm run build && git add -A && git commit -m 'publish-gh-pages' && git push origin gh-pages:gh-pages --force && git checkout master && git branch -D gh-pages"
+    "gh-pages": "git checkout -b gh-pages && ng build --prod && git add -A && git commit -m 'publish-gh-pages' && git push origin gh-pages:gh-pages --force && git checkout master && git branch -D gh-pages"
   },
   "private": true,
   "dependencies": {
@@ -19,7 +19,9 @@
     "@angular/forms": "~7.2.0",
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
+    "@angular/pwa": "^0.13.7",
     "@angular/router": "~7.2.0",
+    "@angular/service-worker": "^7.2.11",
     "angular2-baidu-map": "^4.6.0",
     "core-js": "^2.5.4",
     "rxjs": "~6.3.3",
