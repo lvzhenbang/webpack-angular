@@ -72,7 +72,7 @@ export class FirstComponent implements OnInit {
   ngOnInit() {
     this.path = this.route.snapshot.routeConfig.path;
     this.iss
-      .getData('/assets/data/sidenav.json')
+      .getData('./assets/data/sidenav.json')
       .subscribe((data: any) => {
         this.cn_name = data[this.path].cn_name;
         this.en_name = data[this.path].en_name;

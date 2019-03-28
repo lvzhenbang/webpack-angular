@@ -16,7 +16,7 @@ import { Renderer2 } from '@angular/core';
             class="carousel-item"
             *ngFor="let item of banner; index as i"
             [ngClass]="{active: isActive(i)}">
-          <a [routerLink]="item.href">
+          <a [routerLink]="['../', item.href]">
             <img [src]="item.img" [alt]="item.title">
           </a>
         </div>

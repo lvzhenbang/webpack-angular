@@ -118,10 +118,11 @@ class Carousel {
     for (let i = 0; i < this.items.length; i += 1) {
       const indicatorItem = render.createElement('li');
       render.setAttribute(indicatorItem, 'data-index', i);
+      if (this.activeIndex === i) {
+        render.addClass(indicatorItem, 'active');
+      }
       render.appendChild(indicators, indicatorItem);
     }
-
-    render.addClass((indicators.children)[this.activeIndex], 'active');
     render.appendChild(this.carousel, indicators);
   }
 
