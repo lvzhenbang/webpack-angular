@@ -2,7 +2,13 @@
  * directive of backtop
  * by lzb
  */
-import { Directive, Input, ElementRef, HostListener } from '@angular/core';
+import {
+  Directive,
+  Input,
+  ElementRef,
+  HostListener,
+  Renderer2
+} from '@angular/core';
 
 import scrollto from '../utils/scrollto';
 
@@ -14,28 +20,29 @@ export class BacktopDirective {
   @Input() appBacktop: string;
   showing: boolean;
 
-  constructor(private el: ElementRef) {
+  constructor(
+    public el: ElementRef,
+    public render: Renderer2
+  ) {
     this.showing = Object.prototype.hasOwnProperty.call(el.nativeElement, 'showing') ? el.nativeElement.showing : false;
-
-    window.addEventListener('scroll', () => this.backScroll(el.nativeElement));
+    window.addEventListener('scroll', () => this.backScroll());
   }
 
-  private backScroll(element) {
+  backScroll() {
     if (window.pageYOffset > window.outerHeight) {
       if (!this.showing) {
         this.showing = true;
-        this.el.nativeElement.style.display = 'block';
+        this.render.setStyle(this.el.nativeElement, 'display', 'block');
       }
     } else {
       this.showing = false;
-      this.el.nativeElement.style.display = 'none';
+      this.render.setStyle(this.el.nativeElement, 'display', 'none');
     }
   }
 
   @HostListener('click') onClick() {
-    window.removeEventListener('scroll', this.backScroll);
     this.showing = false;
-    scrollto(0, this.backScroll);
+    scrollto(0, this.backScroll());
   }
 }
 
