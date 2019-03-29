@@ -25,7 +25,7 @@ import scrollto from '../../../utils/scrollto';
             <ul class="sj_map-menu" *ngIf="item.subMap">
               <li *ngFor="let subItem of item.subMap">
                 <a
-                  [routerLink]="subItem.href"
+                  [routerLink]="[item.href, subItem.href]"
                   [type]="subItem.type"
                   (click)="scrollspy($event)"> {{ subItem.text }} </a>
               </li>
